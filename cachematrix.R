@@ -1,3 +1,7 @@
+#MakeCacheMatrix is a function that defines four functions: set, get,
+#setinverse, and getinverse.
+#You may call these daughter functions from the parent function using $.
+
 makeCacheMatrix <- function(x = matrix()) { #define makeCacheMatrix function, define x as empty matrix
     i <- NULL #set i as null
     set <- function(y) { #define set function
@@ -9,6 +13,12 @@ makeCacheMatrix <- function(x = matrix()) { #define makeCacheMatrix function, de
     getinverse <- function() i #define getinverse function (returns inverse of matrix)
     list(set = set, get = get,setinverse = setinverse, getinverse = getinverse) #Generates output list of four functions
 }
+
+#You can run cachesolve on the output of MakeCacheMatrix.
+#It will return the inverse of the input matrix.
+#It contains a conditional such that if you've already defined i with the
+#inverse (i.e. if you just run cachesolve again) it will pull from i rather
+#than recalculating the inverse of the input matrix.
 
 cacheinverse <- function(x, ...) { #define cacheinverse function
     i <- x$getinverse() #define i as output of getinverse
